@@ -7,23 +7,12 @@
         <header>
             <h1><a href="/">Saurav's Django Blog List</a></h1>
         </header>
-
-        <article>
-            <h2><a href="">My first post</a></h2>
-            <time>published: 24.02.2024, 19:14</time>
-            <p>Pehle mysite ka urls.py prr gya, whan blog.urls ka path add kiya. kyuki blog ka urls.py se homepage rander karege.</p>
-        </article>
-
-        <article>
-            <h2><a href="">My second post</a></h2>
-            <time>published: 24.02.2024, 19:22</time>
-            <p>Yhan blog ka urls.py se isse folder ka views file(view is a place where we put the logic of our application) ko import kiya.</p>
-        </article>
-
-        <article>
-            <h2><a href="">My third post</a></h2>
-            <time>published: 24.02.2024, 19:31</time>
-            <p>views.py me apan ne post_list naam ka fun define kiya h, jiska return type rander() h aur woh post_list.html file ko rander karega.</p>
-        </article>
+        {% for post in posts %}
+            <article>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <time>published: {{ post.published_date }}</time>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </article>
+        {% endfor %}
     </body>
 </html>
