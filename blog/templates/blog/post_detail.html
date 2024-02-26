@@ -7,13 +7,21 @@
             <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">
                 {% include './icons/pencil-fill.svg' %}
             </a>
+            <a class="btn btn-secondary" href="{% url 'post_remove' pk=post.pk %}">
+                {% include './icons/trash.svg' %}
+                <!-- <span class="glyphicon glyphicon-remove"></span> -->
+            </a>
             {% endif %}
         </aside>
-        {% if post.published_date %}
-            <time class="date">
+            {% if post.published_date %}
+            <div class="date">
                 {{ post.published_date }}
-            </time>
-        {% endif %}
+            </div>
+            {% else %}
+            <aside class="actions">
+                <a class="btn btn-secondary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+            </aside>
+            {% endif %}
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
     </article>
